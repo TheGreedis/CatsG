@@ -14,7 +14,9 @@ def get_cat(url):
 
 
 def new_get_img():
-    img = get_cat(url)
+    tag = e.get()
+    new_url_tag = f"https://cataas.com/cat/{tag}" if tag else f"https://cataas.com/cat"
+    img = get_cat(new_url_tag)
     if img:
         new_win = Toplevel()
         t_m = Label(new_win, image=img)
@@ -32,7 +34,8 @@ window.geometry(f"500x440+{window.winfo_screenwidth()//2-250}+{window.winfo_scre
 window.iconbitmap("ico_cat.ico")
 
 
-url = "https://cataas.com/cat"
+e = Entry(window)
+e.pack()
 
 
 t_m = Label(window)
