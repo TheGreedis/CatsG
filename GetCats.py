@@ -1,5 +1,6 @@
 import requests
 from tkinter import *
+from tkinter import ttk
 from PIL import Image, ImageTk
 from io import BytesIO
 
@@ -14,7 +15,7 @@ def get_cat(url):
 
 
 def new_get_img():
-    tag = e.get()
+    tag = list_tag.get()
     new_url_tag = f"https://cataas.com/cat/{tag}" if tag else f"https://cataas.com/cat"
     img = get_cat(new_url_tag)
     if img:
@@ -28,18 +29,21 @@ def exit_win():
     window.destroy()
 
 
+All_tag = ["sleep", "jump", "smile", "fight", "black", "white", "orange", "red", "siamese", "bengal"]
+
+
 window = Tk()
 window.title("Caats")
 window.geometry(f"500x440+{window.winfo_screenwidth()//2-250}+{window.winfo_screenheight()//2-220}")
 window.iconbitmap("ico_cat.ico")
 
 
-e = Entry(window)
-e.pack()
+text_taag = Label(window, text="Выберите тэг:")
+text_taag.pack()
 
 
-t_m = Label(window)
-t_m.pack()
+list_tag = ttk.Combobox(window, values=All_tag)
+list_tag.pack()
 
 
 main_menu = Menu(window)
